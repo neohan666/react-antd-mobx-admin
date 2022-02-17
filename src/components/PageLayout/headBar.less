@@ -1,0 +1,56 @@
+.c-Layout-headBar {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  right: 0;
+
+  .headLeft {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    .toggleIcon {
+      height: 40px;
+      width: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin-left: 5px;
+      margin-right: 5px;
+
+      & > .anticon {
+        font-size: 18px;
+      }
+      &:hover {
+        background: rgba(0, 0, 0, 0.02);
+      }
+    }
+  }
+  .headRight {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: flex-end;
+    margin-right: 15px;
+
+    .userMenu {
+      cursor: pointer;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0 5px 0 10px;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.03);
+      }
+      .iconArrowDown {
+        margin: 0 0 0 8px;
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npx lint-staged
+
+# "eslint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+# "stylelint": "stylelint **/*.{css,less} --custom-syntax postcss-less --fix"

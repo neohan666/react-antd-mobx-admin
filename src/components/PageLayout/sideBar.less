@@ -1,0 +1,37 @@
+.c-Layout-sideBar {
+  height: 100%;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .sideBarLayout {
+    min-height: 100%;
+    background-color: #001529;
+    user-select: none;
+  }
+  .logoWrap {
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    height: 50px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+    .logo {
+      display: block;
+      background: url('@{imgPath}/logo.png');
+      background-size: 100% 100%;
+      flex-basis: 26px;
+      flex-shrink: 0;
+      height: 26px;
+    }
+    .title {
+      font-weight: normal;
+      color: #fff;
+      margin-left: 10px;
+      white-space: nowrap;
+      font-size: 16px;
+    }
+  }
+}
