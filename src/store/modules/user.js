@@ -6,14 +6,13 @@
  * @LastEditors: Neo
  */
 import { makeAutoObservable } from 'mobx'
-import jsCookie from 'js-cookie'
 
 export default class User {
   constructor () {
     /**
      * state
      */
-    this.ticket = 'token123' // 登录ticket
+    this.ticket = window.localStorage.getItem('ticket') || '' // 登录ticket
     this.userInfo = {} // 用户信息
 
     makeAutoObservable(this)
@@ -47,6 +46,7 @@ export default class User {
    */
   setTicket (val) {
     this.ticket = val || ''
+    window.localStorage.setItem('ticket', this.ticket)
   }
 
   async setUserInfo (userInfo) {

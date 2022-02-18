@@ -45,6 +45,15 @@ const routes = [
     ]
   },
   {
+    path: '/login',
+    component: () => import(/* webpackChunkName: "login" */ '@/views/login/index'),
+    meta: {
+      title: '登录',
+      noLogin: true,
+      hideMenu: true,
+    },
+  },
+  {
     path: '/403',
     component: () => import(/* webpackChunkName: "errorPage" */ '@/views/errorPage/page403'),
     meta: {
@@ -101,7 +110,7 @@ const onRouteBefore = ({ pathname, meta }) => {
         }
       }
     } else {
-      return `/login?redirectUrl=${pathname}`
+      return `/login?redirectUrl=${encodeURIComponent(window.location.href)}`
     }
   }
 }

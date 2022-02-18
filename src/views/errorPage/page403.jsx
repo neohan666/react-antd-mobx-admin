@@ -2,18 +2,12 @@ import './page403.less'
 import { Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import tools from '@/utils/tools'
-import { useState, useEffect } from 'react'
 
 function Page403 () {
+  const query = tools.getQueryObject()
+  const message = decodeURIComponent(query.message || '')
+
   const navigate = useNavigate()
-
-  const [message, setMessage] = useState('')
-
-  useEffect(() => {
-    const query = tools.getQueryObject()
-    const msg = decodeURIComponent(query.message || '')
-    setMessage(msg)
-  }, [])
 
   function toPageHome () {
     navigate('/')

@@ -46,6 +46,11 @@ function HeadBar () {
     navigate('/index')
   }
 
+  function onLogout () {
+    userStore.setTicket('')
+    navigate('/login')
+  }
+
   return (
     <div className="c-Layout-headBar">
       <div className="headLeft">
@@ -69,7 +74,7 @@ function HeadBar () {
               </Menu.Item>
               <Menu.Divider />
               <Menu.Item key="3">
-                <div className="logout">退出</div>
+                <div className="logout" onClick={onLogout}>退出</div>
               </Menu.Item>
             </Menu>
           }

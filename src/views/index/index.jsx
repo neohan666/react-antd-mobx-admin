@@ -7,7 +7,6 @@
  */
 import './index.less'
 import { observer, useStore } from '@/hooks/storeHook'
-import api from '@/api/index'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from 'antd'
@@ -20,12 +19,11 @@ function Index (props) {
 
   useEffect(() => {
     console.log('index props', props)
-    // initData()
+    initData()
   }, [])
 
   async function initData () {
-    api.getConsumer().then(res => {
-    })
+    // get index data from api
   }
 
   function toPage () {
