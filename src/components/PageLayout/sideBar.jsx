@@ -2,7 +2,7 @@
  * @Description: 侧边栏
  * @Author: Neo
  * @Date: 2022-02-15
- * @LastEditTime: 2022-02-17
+ * @LastEditTime: 2022-02-18
  * @LastEditors: Neo
  */
 import './sideBar.less'
@@ -10,6 +10,7 @@ import { Layout, Menu } from 'antd'
 import { Link, useLocation } from 'react-router-dom'
 import { useStore, observer } from '@/hooks/storeHook'
 import { routes } from '@/router'
+import { getIsCanAccess } from '@/utils/appTools'
 
 const { Sider } = Layout
 const { SubMenu, Item: ItemMenu } = Menu
@@ -32,13 +33,16 @@ function SideBar () {
       let menuList = []
       routeList.forEach(v => {
         v.meta = v.meta || {}
-        if (v.redirect || v.path === '*') {
+        if (v.redirect || v.path === '*' || v.meta.hideMenu) {
           return
         }
         let currentPath = prePath + v.path
         if (v.path === '/') {
           menuList = menuList.concat(getList(v.children, '/'))
         } else {
+          if (!getIsCanAccess(v.meta.accessId)) {
+            return
+          }
           if (v.children) {
             menuList.push((
               <SubMenu key={currentPath} icon={v.meta.icon} title={v.meta.title}>

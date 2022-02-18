@@ -2,7 +2,7 @@
  * @Description: 顶部栏
  * @Author: Neo
  * @Date: 2022-02-15
- * @LastEditTime: 2022-02-17
+ * @LastEditTime: 2022-02-18
  * @LastEditors: Neo
  */
 import './headBar.less'
@@ -17,8 +17,9 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { getRouteTitleMap } from '@/utils/appTools'
 
 function HeadBar () {
-  const { commonStore } = useStore()
+  const { commonStore, userStore } = useStore()
   const { sideBarCollapsed } = commonStore
+  const { userInfo } = userStore
 
   const location = useLocation()
   const navigate = useNavigate()
@@ -73,7 +74,7 @@ function HeadBar () {
             </Menu>
           }
         >
-          <div>用户<DownOutlined className="iconArrowDown"/></div>
+          <div>{userInfo.nickName || ''}<DownOutlined className="iconArrowDown"/></div>
         </Dropdown>
       </div>
     </div>

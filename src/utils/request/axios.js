@@ -99,10 +99,11 @@ service.interceptors.response.use(
     if (res.errorCode + '' === '0') {
       return res
     }
-    // 登录失败，唤起登录页
-    /* if ([].includes(+res.errorCode)) {
-
-    } */
+    // 未登录或登录过期，跳转登录页
+    if ([10, 11].includes(+res.errorCode)) {
+      const pre = window.location.origin + process.env.PUBLIC_URL
+      window.location.href = `${pre}/login?redirectUrl=${encodeURIComponent(window.location.href)}`
+    }
     // code不为0，不符合预期，toast提示
     message.warning('Err：' + (res.errorMessage || ''), 3000)
     // 抛出错误信息

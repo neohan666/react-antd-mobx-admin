@@ -2,25 +2,37 @@
  * @Description: 路由容器组件
  * @Author: Neo
  * @Date: 2021-12-30
- * @LastEditTime: 2022-01-06
+ * @LastEditTime: 2022-02-18
  * @LastEditors: Neo
  */
-import { Navigate, useLocation } from 'react-router-dom'
+import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 
 let temp = null
 
 function Guard ({ element, meta, handleRouteBefore }) {
+  meta = meta || {}
+
   const location = useLocation()
   const { pathname } = location
-  meta = meta || {}
+
+  const navigate = useNavigate()
 
   if (handleRouteBefore) {
     if (temp === element) {
       return element
     }
-    const newPath = handleRouteBefore({ pathname, meta })
-    if (newPath && newPath !== pathname) {
-      element = <Navigate to={newPath} />
+    const pathRes = handleRouteBefore({ pathname, meta })
+    const pathResType = Object.prototype.toString.call(pathRes).match(/\s(\w+)\]/)[1]
+    if (pathResType === 'Promise') {
+      pathRes.then(res => {
+        if (res && res !== pathname) {
+          navigate(res, { replace: true })
+        }
+      })
+    } else {
+      if (pathRes && pathRes !== pathname) {
+        element = <Navigate to={pathRes} replace={true} />
+      }
     }
   }
 

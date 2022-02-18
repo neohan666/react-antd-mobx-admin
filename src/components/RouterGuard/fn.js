@@ -46,7 +46,7 @@ function transformRoutes (routes) {
   routes.forEach(route => {
     const obj = { ...route }
     if (obj.redirect) {
-      obj.element = <Navigate to={obj.redirect} />
+      obj.element = <Navigate to={obj.redirect} replace={true}/>
     }
     if (obj.component) {
       obj.element = lazyLoad(obj.component, obj.meta)

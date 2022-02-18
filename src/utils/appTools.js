@@ -3,6 +3,7 @@
  * （函数请添加详细注释）
  */
 import { routes } from '@/router'
+import store from '@/store'
 
 /**
  * 获取h5域名环境
@@ -52,7 +53,24 @@ function getRouteTitleMap () {
   return getMap(routes)
 }
 
+/**
+ * @description: 获取是否具有权限
+ * @param {object} meta 路由配置中自定义meta数据
+ * @param {string} message 跳转403无权限页面的额外说明
+ * @return {boolean}
+ */
+function getIsCanAccess (accessId) {
+  const { userStore } = store
+  const { accessIdList } = userStore
+  if (accessId && !accessIdList.includes(accessId)) {
+    return false
+  } else {
+    return true
+  }
+}
+
 export {
   getH5Env, // 获取h5域名环境
-  getRouteTitleMap, // 获取路由名称数据
+  getRouteTitleMap, // 获取路由路径和路由名称的映射数据
+  getIsCanAccess, // 获取是否具有权限
 }

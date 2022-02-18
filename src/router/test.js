@@ -15,8 +15,8 @@ export default [
     component: () => import(/* webpackChunkName: "test" */ '@/views/test/index'),
     meta: {
       title: '测试页',
-      noLogin: true,
       icon: <NumberOutlined />,
+      accessId: '10009',
     }
   },
 ]

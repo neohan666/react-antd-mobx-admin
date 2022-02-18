@@ -12,7 +12,6 @@ export default [
     path: 'nest',
     meta: {
       title: '多级菜单',
-      noLogin: true,
       icon: <BarsOutlined />,
     },
     children: [
@@ -20,7 +19,6 @@ export default [
         path: 'nest1',
         meta: {
           title: '二级菜单1',
-          noLogin: true,
         },
         children: [
           {
@@ -28,7 +26,6 @@ export default [
             component: () => import(/* webpackChunkName: "nest11" */ '@/views/nest/nest1/nest11/index'),
             meta: {
               title: '三级菜单11',
-              noLogin: true,
             },
           },
           {
@@ -36,7 +33,6 @@ export default [
             component: () => import(/* webpackChunkName: "nest12" */ '@/views/nest/nest1/nest12/index'),
             meta: {
               title: '三级菜单12',
-              noLogin: true,
             },
           },
         ]
@@ -46,7 +42,6 @@ export default [
         component: () => import(/* webpackChunkName: "nest2" */ '@/views/nest/nest2/index'),
         meta: {
           title: '二级菜单2',
-          noLogin: true,
         },
       }
     ]

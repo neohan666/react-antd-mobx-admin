@@ -13,7 +13,7 @@ export default class User {
     /**
      * state
      */
-    this.ticket = '' // 登录ticket
+    this.ticket = 'token123' // 登录ticket
     this.userInfo = {} // 用户信息
 
     makeAutoObservable(this)
@@ -24,17 +24,22 @@ export default class User {
    */
   // 是否已登录
   get isLogin () {
-    return !!(this.ticket || jsCookie.get('JESSIONID'))
+    return !!this.ticket
   }
 
   // 是否已获取到userInfo
   get isGotUserInfo () {
-    return this.userInfo.consumerId !== undefined
+    return this.userInfo.userId !== undefined
   }
 
-  // consumerId
-  get consumerId () {
-    return this.userInfo.consumerId
+  // userId
+  get userId () {
+    return this.userInfo.userId
+  }
+
+  // 用户所有权限id数组
+  get accessIdList () {
+    return this.userInfo.accessIdList || []
   }
 
   /**
