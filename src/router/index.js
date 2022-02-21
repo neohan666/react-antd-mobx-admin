@@ -95,14 +95,14 @@ const onRouteBefore = ({ pathname, meta }) => {
       const path403 = `/403?message=${encodeURIComponent(message)}`
 
       if (!userStore.isGotUserInfo) { // 是否已获取到用户（权限）信息
-        return api.getConsumer().then(res => {
-          const data = res.data || {}
-          userStore.setUserInfo(data)
-          if (!getIsCanAccess(accessId)) {
-            return path403
-          } else {
-            return null
-          }
+        return new Promise((resolve) => {
+          api.getConsumer().then(res => {
+            const data = res.data || {}
+            userStore.setUserInfo(data)
+            if (!getIsCanAccess(accessId)) {
+              resolve(path403)
+            }
+          })
         })
       } else {
         if (!getIsCanAccess(accessId)) {
