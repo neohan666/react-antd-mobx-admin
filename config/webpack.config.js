@@ -29,6 +29,7 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const createEnvironmentHash = require('./webpack/persistentCache/createEnvironmentHash');
 
 // const CircularDependencyPlugin = require('circular-dependency-plugin')
+const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin')
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -769,6 +770,7 @@ module.exports = function (webpackEnv) {
           cwd: process.cwd(),
         }
       ), */
+      new AntdDayjsWebpackPlugin(),
     ].filter(Boolean),
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter
