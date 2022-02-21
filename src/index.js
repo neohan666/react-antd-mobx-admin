@@ -9,12 +9,16 @@ import store from '@/store'
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/lib/locale/zh_CN'
 import 'antd/dist/antd.css'
+import moment from 'moment'
+import 'moment/locale/zh-cn'
 
 import '@/assets/style/index.less'
 
 import mainFn from '@/utils/mainFn.js'
 
 mainFn.setNoReferer()
+
+moment.locale('zh-cn')
 
 ReactDOM.render(
   // <React.StrictMode> // antd的侧边栏二级菜单展开时控制台会报错，暂时关闭StrictMode，等antd的更新

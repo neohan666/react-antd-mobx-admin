@@ -9,7 +9,7 @@ import './index.less'
 import { observer, useStore } from '@/hooks/storeHook'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button } from 'antd'
+import { Button, DatePicker } from 'antd'
 import tools from '@/utils/tools'
 
 function Index (props) {
@@ -36,6 +36,9 @@ function Index (props) {
       <div className="content">
         <div>
           <Button onClick={toPage}>去测试页</Button>
+        </div>
+        <div>
+          <DatePicker />
         </div>
 
         {userStore.ticket}
