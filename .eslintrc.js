@@ -38,5 +38,6 @@ module.exports = {
     'prefer-const': 'off',
     'react/react-in-jsx-scope': 'off',
     'react-hooks/exhaustive-deps': 'off',
+    'quotes': ['error', 'single', { 'allowTemplateLiterals': true }],
   }
 }
