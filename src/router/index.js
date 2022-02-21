@@ -16,6 +16,7 @@ import nest from './nest'
 
 /**
  * @description: 全局路由配置
+ * meta字段说明：↓↓↓
  * @param {string} title // 路由页面标题，以及侧边栏菜单中的标题
  * @param {element} icon // 侧边栏该路由菜单显示的图标
  * @param {string} accessId // 路由页面权限id

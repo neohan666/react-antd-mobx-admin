@@ -33,14 +33,13 @@ function Index (props) {
 
   return (
     <div className="v-index-index">
-      <div className="content">
-        <div>
-          <Button onClick={toPage}>去测试页</Button>
-        </div>
-        <div>
-          <DatePicker />
-        </div>
-
+      <div className='wrap'>
+        <Button onClick={toPage}>去测试页</Button>
+      </div>
+      <div className='wrap'>
+        <DatePicker />
+      </div>
+      <div className='wrap'>
         {userStore.ticket}
       </div>
     </div>
