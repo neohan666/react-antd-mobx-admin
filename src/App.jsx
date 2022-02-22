@@ -6,7 +6,7 @@
  * @LastEditors: Neo
  */
 import { routes, onRouteBefore } from '@/router'
-import RouterGuard from '@/components/RouterGuard'
+import RouterWaiter from 'react-router-waiter'
 import { useStore } from '@/hooks/storeHook'
 
 function App () {
@@ -16,7 +16,7 @@ function App () {
   // console.log('store', store)
 
   return (
-    <RouterGuard
+    <RouterWaiter
       routes={routes}
       onRouteBefore={onRouteBefore}
     />
