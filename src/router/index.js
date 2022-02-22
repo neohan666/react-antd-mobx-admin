@@ -8,7 +8,7 @@
 import store from '@/store'
 import api from '@/api/index'
 import PageLayout from '@/components/PageLayout'
-import { HomeOutlined } from '@ant-design/icons' // meta.icon设置菜单图标，仅设置一级菜单即可
+import { HomeOutlined, GithubOutlined } from '@ant-design/icons' // meta.icon设置菜单图标，仅设置一级菜单即可
 import { getIsCanAccess } from '@/utils/appTools'
 // 导入模块路由
 import test from './test'
@@ -72,6 +72,13 @@ const routes = [
       hideMenu: true,
     },
   },
+  {
+    url: 'https://github.com/neohan666/react-antd-mobx-admin',
+    meta: {
+      title: 'GitHub',
+      icon: <GithubOutlined />,
+    }
+  }
 ]
 
 /**

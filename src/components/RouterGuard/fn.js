@@ -40,11 +40,17 @@ function lazyLoad (importFn, meta) {
 
 /**
  * @description: 路由配置列表数据转换
+ * @param {string} redirect 要重定向的路由路径
+ * @param {function} component 函数形式import懒加载组件
+ * @param {object} meta 自定义字段
  */
 function transformRoutes (routes) {
   const list = []
   routes.forEach(route => {
     const obj = { ...route }
+    if (obj.path === undefined) {
+      return
+    }
     if (obj.redirect) {
       obj.element = <Navigate to={obj.redirect} replace={true}/>
     }

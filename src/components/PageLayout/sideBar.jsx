@@ -2,7 +2,7 @@
  * @Description: 侧边栏
  * @Author: Neo
  * @Date: 2022-02-15
- * @LastEditTime: 2022-02-18
+ * @LastEditTime: 2022-02-22
  * @LastEditors: Neo
  */
 import './sideBar.less'
@@ -36,10 +36,10 @@ function SideBar () {
         if (v.redirect || v.path === '*' || v.meta.hideMenu) {
           return
         }
-        let currentPath = prePath + v.path
         if (v.path === '/') {
           menuList = menuList.concat(getList(v.children, '/'))
-        } else {
+        } else if (v.path !== undefined) {
+          const currentPath = prePath + v.path
           if (!getIsCanAccess(v.meta.accessId)) {
             return
           }
@@ -59,6 +59,12 @@ function SideBar () {
               </ItemMenu>
             ))
           }
+        } else if (v.url) {
+          menuList.push((
+            <ItemMenu key={prePath + v.url} icon={v.meta.icon}>
+              <a href={v.url} target="_blank" rel="noreferrer">{v.meta.title}</a>
+            </ItemMenu>
+          ))
         }
       })
       return menuList
