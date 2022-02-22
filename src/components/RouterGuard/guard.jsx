@@ -1,5 +1,5 @@
 /**
- * @Description: 路由容器组件
+ * @Description: 页面路由容器组件
  * @Author: Neo
  * @Date: 2021-12-30
  * @LastEditTime: 2022-02-18
@@ -9,7 +9,7 @@ import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 
 let temp = null
 
-function Guard ({ element, meta, handleRouteBefore }) {
+function Guard ({ element, meta, onRouteBefore }) {
   meta = meta || {}
 
   const location = useLocation()
@@ -17,11 +17,11 @@ function Guard ({ element, meta, handleRouteBefore }) {
 
   const navigate = useNavigate()
 
-  if (handleRouteBefore) {
+  if (onRouteBefore) {
     if (temp === element) {
       return element
     }
-    const pathRes = handleRouteBefore({ pathname, meta })
+    const pathRes = onRouteBefore({ pathname, meta })
     const pathResType = Object.prototype.toString.call(pathRes).match(/\s(\w+)\]/)[1]
     if (pathResType === 'Promise') {
       pathRes.then(res => {
