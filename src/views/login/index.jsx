@@ -2,7 +2,7 @@
  * @Description: 登录页
  * @Author: Neo
  * @Date: 2022-02-18
- * @LastEditTime: 2022-02-21
+ * @LastEditTime: 2022-02-24
  * @LastEditors: Neo
  */
 import './index.less'
@@ -14,6 +14,7 @@ import {
   UserOutlined,
   LockOutlined,
 } from '@ant-design/icons'
+import { getRoutePath } from '@/utils/appTools'
 
 function Index () {
   const navigate = useNavigate()
@@ -36,9 +37,7 @@ function Index () {
         userStore.setTicket(ticket)
 
         if (redirectUrl) {
-          const divideStr = process.env.PUBLIC_URL + '/'
-          const divideStart = redirectUrl.indexOf(divideStr)
-          const path = redirectUrl.slice(divideStart + divideStr.length - 1)
+          const path = getRoutePath(redirectUrl, true)
           navigate(path)
         } else {
           navigate('/index')

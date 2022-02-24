@@ -22,9 +22,9 @@ function getH5Env (url = '') {
 }
 
 /**
- * 获取路由路径和路由名称的映射数据
+ * 获取路由路径和路由meta字段的映射数据
  */
-function getRouteTitleMap () {
+function getRouteMetaMap () {
   const getMap = (routeList = [], prePath = '') => {
     let map = {}
     routeList.forEach(v => {
@@ -38,7 +38,7 @@ function getRouteTitleMap () {
       } else {
         map = {
           ...map,
-          [currentPath]: v.meta.title || ''
+          [currentPath]: v.meta || {}
         }
       }
       if (v.children) {
@@ -69,8 +69,28 @@ function getIsCanAccess (accessId) {
   }
 }
 
+/**
+ * @description: 根据url解析出路由path路径
+ * @param {string} url 默认取当前页面地址
+ * @param {boolean} isIncludeParams 是否需要包含路由参数，便于路由跳转携带数据
+ * @return {string}
+ */
+function getRoutePath (url, isIncludeParams) {
+  url = url || window.location.href
+  const divideStr = process.env.PUBLIC_URL + '/'
+  const divideStart = url.indexOf(divideStr)
+  const pathWithParams = url.slice(divideStart + divideStr.length - 1)
+  if (!isIncludeParams) {
+    return pathWithParams
+  } else {
+    const path = pathWithParams.split('?')[0]
+    return path
+  }
+}
+
 export {
   getH5Env, // 获取h5域名环境
-  getRouteTitleMap, // 获取路由路径和路由名称的映射数据
+  getRouteMetaMap, // 获取路由路径和路由名称的映射数据
   getIsCanAccess, // 获取是否具有权限
+  getRoutePath, // 根据url解析出路由path路径
 }

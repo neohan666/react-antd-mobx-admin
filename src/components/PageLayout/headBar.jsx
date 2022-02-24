@@ -2,7 +2,7 @@
  * @Description: 顶部栏
  * @Author: Neo
  * @Date: 2022-02-15
- * @LastEditTime: 2022-02-18
+ * @LastEditTime: 2022-02-24
  * @LastEditors: Neo
  */
 import './headBar.less'
@@ -14,7 +14,7 @@ import {
 import { useStore, observer } from '@/hooks/storeHook'
 import { Breadcrumb, Menu, Dropdown, } from 'antd'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { getRouteTitleMap } from '@/utils/appTools'
+import { getRouteMetaMap } from '@/utils/appTools'
 
 function HeadBar () {
   const { commonStore, userStore } = useStore()
@@ -31,13 +31,13 @@ function HeadBar () {
   /**
    * 面包屑
    */
-  const routeTitleMap = getRouteTitleMap()
+  const routeMetaMap = getRouteMetaMap()
   const pathSnippets = location.pathname.split('/').filter(i => i)
   const extraBreadcrumbItems = pathSnippets.map((_, index) => {
     const url = `/${pathSnippets.slice(0, index + 1).join('/')}`
     return (
       <Breadcrumb.Item key={url}>
-        <span>{routeTitleMap[url]}</span>
+        <span>{routeMetaMap[url].title}</span>
       </Breadcrumb.Item>
     )
   })

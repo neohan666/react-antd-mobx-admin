@@ -9,11 +9,12 @@ import http from '@/utils/request/http'
 
 const api = {
   // 获取用户信息
-  // getConsumer: (data) => http('get', '', '/proxy/getConsumer', data),
+  // getUserInfo: (data) => http('get', '', '/proxy/getUserInfo', data),
   // 模拟从接口获取用户信息
-  getConsumer () {
+  getUserInfo () {
     return new Promise((resolve) => {
       setTimeout(() => {
+        console.log('got userInfo')
         resolve({
           data: {
             userId: '666',
