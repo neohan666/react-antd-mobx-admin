@@ -60,9 +60,12 @@ function getRouteMetaMap () {
  * @return {boolean}
  */
 function getIsCanAccess (accessId) {
+  if (!accessId) {
+    return true
+  }
   const { userStore } = store
   const { accessIdList } = userStore
-  if (accessId && !accessIdList.includes(accessId)) {
+  if (!accessIdList.includes(accessId)) {
     return false
   } else {
     return true
