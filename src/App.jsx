@@ -5,6 +5,7 @@
  * @LastEditTime: 2022-02-17
  * @LastEditors: Neo
  */
+import { HashRouter } from 'react-router-dom'
 import { routes, onRouteBefore } from '@/router'
 import RouterWaiter from 'react-router-waiter'
 import { useStore } from '@/hooks/storeHook'
@@ -37,14 +38,18 @@ function App () {
     }
   }, [])
 
-  return isRender
-    ? (
-      <RouterWaiter
-        routes={routes}
-        onRouteBefore={onRouteBefore}
-      />
-      )
-    : null
+  return (
+    <HashRouter>
+      {isRender
+        ? (
+        <RouterWaiter
+          routes={routes}
+          onRouteBefore={onRouteBefore}
+        />
+          )
+        : null}
+    </HashRouter>
+  )
 }
 
 export default App
