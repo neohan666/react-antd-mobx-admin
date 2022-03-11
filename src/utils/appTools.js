@@ -81,8 +81,9 @@ function getIsCanAccess (accessId) {
 function getRoutePath (url, isIncludeParams) {
   url = url || window.location.href
   const divideStr = process.env.PUBLIC_URL + '/'
-  const divideStart = url.indexOf(divideStr)
-  const pathWithParams = url.slice(divideStart + divideStr.length - 1)
+  const reg = new RegExp(`//[\\w-\\.:]+${divideStr}(.*)*`)
+  const match = url.match(reg) || []
+  const pathWithParams = '/' + (match[1] || '')
   if (!isIncludeParams) {
     return pathWithParams
   } else {
