@@ -3,14 +3,14 @@ react后台管理系统，基于create-react-app搭建，供学习参考。
 + 主技术栈：react 17 + react-router 6 + mobx 6 + antd 4
 + 代码校验：eslint + stylelint + husky
 
+TS版分支：[typescript](https://github.com/neohan666/react-antd-mobx-admin/tree/typescript)
+
 ## 二、功能
 + 界面排版简介高效。
 + 侧边栏菜单根据路由配置自动生成。
-+ 前端自主可控的权限管理方案，配置简单，扩展方便。
-+ 路由统一管理，以及实现路由拦截。
-  + 具体方案实现：https://blog.csdn.net/u010059669/article/details/122359412
-+ 使用mobx状态管理工具，配置简单。
-  + 具体配置方式：https://blog.csdn.net/u010059669/article/details/122476596
++ 前端自主可控的权限管理方案，配置简单，扩展方便。（[权限设计方案](https://blog.csdn.net/u010059669/article/details/123112335)）
++ 路由统一管理，以及实现路由拦截。（[具体方案实现](https://blog.csdn.net/u010059669/article/details/122359412)）
++ 使用mobx状态管理工具，配置简单。（[具体配置方式](https://blog.csdn.net/u010059669/article/details/122476596)）
 
 ![image](/src/assets/img/preview.png)
 
