@@ -5,6 +5,7 @@
  * @LastEditTime: 2022-01-18
  * @LastEditors: Neo
  */
+import { Method } from 'axios'
 import request from './axios'
 
 /**
@@ -14,12 +15,12 @@ import request from './axios'
   * @params {string} method 可选，请求方式，默认
   * @params {boolean} codeList 可选，控制自行处理接口响应异常的code码列表，默认为空数组
   */
-function http (method, host, apiUrl, data, {
+function http (method: Method, host: string, apiUrl: string, data: any, {
   codeList,
   headers,
   baseURL,
   withCredentials,
-} = {}) {
+}: any = {}) {
   // 默认值
   method = method || 'get'
   codeList = codeList || []
@@ -30,7 +31,7 @@ function http (method, host, apiUrl, data, {
   withCredentials = withCredentials === undefined ? true : !!withCredentials
 
   // url
-  let url
+  let url = ''
   if (process.env.NODE_ENV === 'development') {
     // 本地开发
     url = apiUrl

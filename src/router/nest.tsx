@@ -5,9 +5,10 @@
  * @LastEditTime: 2022-02-17
  * @LastEditors: Neo
  */
+import { RoutesTypeNew } from '@/types/routes'
 import { BarsOutlined } from '@ant-design/icons'
 
-export default [
+const nest: RoutesTypeNew = [
   {
     path: 'nest',
     meta: {
@@ -47,3 +48,5 @@ export default [
     ]
   },
 ]
+
+export default nest

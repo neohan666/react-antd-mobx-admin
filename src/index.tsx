@@ -13,7 +13,7 @@ import 'dayjs/locale/zh-cn'
 
 import '@/assets/style/index.less'
 
-import mainFn from '@/utils/mainFn.js'
+import mainFn from '@/utils/mainFn'
 
 mainFn.setNoReferer()
 

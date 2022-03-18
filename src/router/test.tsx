@@ -5,11 +5,10 @@
  * @LastEditTime: 2022-01-12
  * @LastEditors: Neo
  */
-import {
-  NumberOutlined,
-} from '@ant-design/icons'
+import { RoutesTypeNew } from '@/types/routes'
+import { NumberOutlined } from '@ant-design/icons'
 
-export default [
+const test: RoutesTypeNew = [
   {
     path: 'test',
     component: () => import(/* webpackChunkName: "test" */ '@/views/test/index'),
@@ -20,3 +19,5 @@ export default [
     }
   },
 ]
+
+export default test

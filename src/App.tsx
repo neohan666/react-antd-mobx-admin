@@ -29,7 +29,7 @@ function App () {
       setIsRender(true)
     } else {
       if (!userStore.isGotUserInfo) {
-        api.getUserInfo().then(res => {
+        api.getUserInfo().then((res: any) => {
           const data = res.data || {}
           userStore.setUserInfo(data)
           setIsRender(true)

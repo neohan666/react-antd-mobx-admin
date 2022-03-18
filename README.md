@@ -1,9 +1,7 @@
 ## 一、简介
 react后台管理系统，基于create-react-app搭建，供学习参考。
-+ 主技术栈：react 17 + react-router 6 + mobx 6 + antd 4
++ 主技术栈：react 17 + typescript + react-router 6 + mobx 6 + antd 4
 + 代码校验：eslint + stylelint + husky
-
-TS版分支：[typescript](https://github.com/neohan666/react-antd-mobx-admin/tree/typescript)
 
 ## 二、功能
 + 界面排版简介高效。
@@ -28,7 +26,7 @@ npm run build
 
 ## 三、代码编写
 + 统一使用 react hook 代码组织方式。
-+ 页面和组件统一使用 jsx 文件后缀名。
++ 页面和组件统一使用 tsx 文件后缀名。
 + 组件命名：
   - `组件文件夹`命名使用首字母大写驼峰；
   - `组件文件`命名使用首字母小写驼峰。

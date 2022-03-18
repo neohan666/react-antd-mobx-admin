@@ -15,8 +15,10 @@ const proxyData = {
   },
 }
 
-module.exports = function setupProxy (app) {
+module.exports = function setupProxy (app: any) {
   Object.keys(proxyData).forEach(key => {
-    app.use(key, createProxyMiddleware(proxyData[key]))
+    app.use(key, createProxyMiddleware((proxyData as any)[key]))
   })
 }
+
+export {}

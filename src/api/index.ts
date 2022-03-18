@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-12-28
  * @LastEditors: Neo
  */
-import http from '@/utils/request/http'
+// import http from '@/utils/request/http'
 
 const api = {
   // 获取用户信息

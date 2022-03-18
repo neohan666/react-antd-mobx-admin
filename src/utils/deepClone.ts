@@ -10,10 +10,10 @@
  * @param {any} target 源数据
  * @return {any} 克隆后的数据
  */
-function deepClone (target) {
-  function clone (target, map = new WeakMap()) {
-    let result
-    const type = Object.prototype.toString.call(target).match(/\s(\w+)\]/)[1]
+function deepClone (target: any): any {
+  function clone (target: any, map = new WeakMap()) {
+    let result: any
+    const type = (Object.prototype.toString.call(target).match(/\s(\w+)\]/) as any)[1]
 
     if (typeof target !== 'object' || target === null) {
       // 基本数据类型
@@ -31,17 +31,17 @@ function deepClone (target) {
 
           if (type === 'Array') {
             // Array
-            target.forEach(v => {
+            target.forEach((v: any) => {
               result.push(clone(v, map))
             })
           } else if (type === 'Set') {
             // Set
-            target.forEach(v => {
+            target.forEach((v: any) => {
               result.add(clone(v, map))
             })
           } else if (type === 'Map') {
             // Map
-            target.forEach((v, k) => {
+            target.forEach((v: any, k: number) => {
               result.set(k, clone(v, map))
             })
           } else {

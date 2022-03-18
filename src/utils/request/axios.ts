@@ -5,16 +5,21 @@
  * @LastEditTime: 2022-01-18
  * @LastEditors: Neo
  */
-import axios from 'axios'
+import axios, { AxiosRequestConfig, Method } from 'axios'
 import tools from '@/utils/tools'
 import { message } from 'antd'
 import store from '@/store'
+
+interface ConfigMoreType {
+  codeList?: number[];
+}
+interface ReqConfig extends AxiosRequestConfig, ConfigMoreType {}
 
 // 创建axios实例
 const service = axios.create()
 
 // 定义额外配置
-let configMore
+let configMore: ConfigMoreType
 
 const { userStore } = store
 
@@ -24,7 +29,7 @@ const { userStore } = store
    * @params {boolean} codeList 可选，控制自行处理接口响应异常的code码列表(resolve且不弹出toast)，默认为空数组
    * ......
    */
-function request (config) {
+function request (config: ReqConfig) {
   // 获取额外配置参数
   const { codeList } = config
   configMore = {
@@ -50,14 +55,14 @@ service.interceptors.request.use(
     // baseURL
     config.baseURL = config.baseURL || ''
     // 请求方法
-    config.method = config.method?.toLowerCase() || 'get'
+    config.method = (config.method?.toLowerCase() || 'get') as Method
     // 请求头
     config.headers = config.headers || {}
     // 请求参数
     if (config.method === 'post') {
       // post请求
       config.data = config.data || {}
-      const contentType = config.headers['Content-Type'] || ''
+      const contentType = (config.headers['Content-Type'] || '') as string
       if (contentType.includes('json')) {
         // json传参
         config.transformRequest = [(data) => data && JSON.stringify(tools.filterObject(data))]

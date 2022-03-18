@@ -17,7 +17,7 @@ function setNoReferer () {
   const metaEle = document.createElement('meta')
   metaEle.name = 'referrer'
   metaEle.content = 'no-referrer'
-  headEle.appendChild(metaEle)
+  headEle && headEle.appendChild(metaEle)
 }
 
 export default {

@@ -8,11 +8,13 @@
 import { makeAutoObservable } from 'mobx'
 
 export default class Common {
+  sideBarCollapsed = false
+
   constructor () {
     /**
       * state
       */
-    this.sideBarCollapsed = !!+window.localStorage.getItem('sideBarCollapsed') || false // 侧边栏是否收起
+    this.sideBarCollapsed = window.localStorage.getItem('sideBarCollapsed') === 'true' || false // 侧边栏是否收起
 
     makeAutoObservable(this)
   }
@@ -24,8 +26,8 @@ export default class Common {
   /**
     * action
     */
-  setSideBarCollapsed (val) {
-    this.sideBarCollapsed = !!val
-    window.localStorage.setItem('sideBarCollapsed', +this.sideBarCollapsed)
+  setSideBarCollapsed (val: boolean) {
+    this.sideBarCollapsed = val
+    window.localStorage.setItem('sideBarCollapsed', this.sideBarCollapsed + '')
   }
 }

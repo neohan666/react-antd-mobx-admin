@@ -11,7 +11,7 @@ import Clipboard from 'clipboard'
  * @param {string} text 要复制的文字
  * @return {promise} 返回promise对象
  */
-export default function handleClipboard (text) {
+export default function handleClipboard (text: string) {
   return new Promise((resolve, reject) => {
     const element = document.createElement('div')
     const clipboard = new Clipboard(element, {
@@ -25,6 +25,6 @@ export default function handleClipboard (text) {
       clipboard.destroy()
       reject(err)
     })
-    clipboard.onClick({ currentTarget: element })
+    ;(clipboard as any).onClick({ currentTarget: element })
   })
 }

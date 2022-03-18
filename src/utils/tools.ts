@@ -12,7 +12,7 @@
  * @param {boolean} isNeedZero 是否需要自动补零，默认true
  * @return {string} 默认格式 2018-09-01 10:55:00
  */
-function formatDate (time, format, isNeedZero = true) {
+function formatDate (time?: Date | number | string, format?: string, isNeedZero = true): string {
   time = time || new Date()
   // eslint-disable-next-line eqeqeq
   if (+time == time) {
@@ -39,7 +39,7 @@ function formatDate (time, format, isNeedZero = true) {
     a: date.getDay()
   }
   const timeStr = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
-    let value = formatObj[key]
+    let value = (formatObj as any)[key]
     if (key === 'a') return ['一', '二', '三', '四', '五', '六', '日'][value - 1]
     if (isNeedZero) {
       if (result.length > 0 && value < 10) {
@@ -51,30 +51,12 @@ function formatDate (time, format, isNeedZero = true) {
   return timeStr
 }
 
-function getCountDown (timestamp) {
-  const checkTime = function (i) {
-    if (i < 10) {
-      i = '0' + i
-    }
-    return i
-  }
-  const secondes = parseInt(timestamp / 1000)
-  const day = parseInt(secondes / 60 / 60 / 24, 10)
-  const hours = parseInt(secondes / 60 / 60 % 24, 10)
-  if (day > 0) {
-    return `${day}天${hours}时`
-  }
-  const minutes = parseInt(secondes / 60 % 60, 10)
-  const second = parseInt(secondes % 60, 10)
-  return `${checkTime(hours)}:${checkTime(minutes)}:${checkTime(second)}`
-}
-
 /**
  * 日期格式转时间戳
  * @param {date} date js的date类型、格式化后的日期格式 2019-05-24 14:22:17
  * @return {number} 1558678937000
  */
-function getTimestamp (date) {
+function getTimestamp (date?: Date | string): number {
   if (!date) {
     return +new Date()
   }
@@ -89,7 +71,7 @@ function getTimestamp (date) {
  * @param {any} val 任意数据类型的数据
  * @return {boolean}
  */
-function judgeNaN (val) {
+function judgeNaN (val: any): boolean {
   return (typeof val) === 'number' && !(val >= 0) && !(val <= 0)
 }
 
@@ -98,14 +80,11 @@ function judgeNaN (val) {
  * @param {object} obj 对象数据
  * @return {object}
  */
-function filterObject (obj) {
-  const isValid = (val) => {
-    function judgeNaN (val) {
-      return (typeof val) === 'number' && !(val >= 0) && !(val <= 0)
-    }
+function filterObject (obj: any): any {
+  const isValid = (val: any) => {
     return val !== undefined && !judgeNaN(val) && val !== null
   }
-  const newObj = {}
+  const newObj: any = {}
   Object.keys(obj).forEach(v => {
     const val = obj[v]
     if (isValid(val)) {
@@ -120,7 +99,7 @@ function filterObject (obj) {
  * @param {object} obj 对象参数
  * @return {string} a=1&b=2&c=3
  */
-function objToUrlParams (obj) {
+function objToUrlParams (obj: { [propname: string]: any }): string {
   let str = ''
   Object.keys(obj).forEach(v => {
     const val = obj[v]
@@ -136,10 +115,10 @@ function objToUrlParams (obj) {
  * @param {string} url 指定地址，默认取当前页地址
  * @return {string} { a: 1, b: 2, c: 3 }
  */
-function getQueryObject (url) {
+function getQueryObject (url?: string): any {
   url = url || window.location.href
   const search = url.substring(url.lastIndexOf('?') + 1)
-  const obj = {}
+  const obj: any = {}
   const reg = /([^?&=]+)=([^?&=]*)/g
   search.replace(reg, (rs, $1, $2) => {
     const name = decodeURIComponent($1)
@@ -157,7 +136,7 @@ function getQueryObject (url) {
  */
 function createUniqueString () {
   const timestamp = +new Date() + ''
-  const randomNum = parseInt((1 + Math.random()) * 65536) + ''
+  const randomNum = (1 + Math.random()) * 65536 + ''
   return (+(randomNum + timestamp)).toString(32)
 }
 
@@ -167,11 +146,10 @@ function createUniqueString () {
  * @param {number} t 等待时间（毫秒）
  * @return {function}
  */
-function debounce (fn, t) {
-  let timeId
+function debounce (fn: any, t?: number) {
+  let timeId: any
   let delay = t || 500
-  return function () {
-    let args = arguments
+  return function (this: any, ...args: any) {
     if (timeId) {
       clearTimeout(timeId)
     }
@@ -188,12 +166,11 @@ function debounce (fn, t) {
  * @param {number} t 间隔时间（毫秒）
  * @return {function}
  */
-function throttle (fn, t) {
-  let timeId
+function throttle (fn: any, t?: number) {
+  let timeId: any
   let firstTime = true
   let interval = t || 500
-  return function () {
-    let args = arguments
+  return function (this: any, ...args: any) {
     if (firstTime) {
       fn.apply(this, args)
       firstTime = false
@@ -215,9 +192,9 @@ function throttle (fn, t) {
  * @param {any} data 数据
  * @return {string} 'array'
  */
-function getDataType (data) {
+function getDataType (data: any): string {
   const str = Object.prototype.toString.call(data)
-  return str.match(/\s(\w*)\]/)[1].toLowerCase()
+  return (str.match(/\s(\w*)\]/) as any)[1].toLowerCase()
 }
 
 /**
@@ -225,7 +202,7 @@ function getDataType (data) {
  * @param {number} num 数字
  * @return {string} 10,000
  */
-function toThousands (num) {
+function toThousands (num: number): string {
   return (+num || 0).toString().replace(/^-?\d+/g, m => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
 }
 
@@ -235,7 +212,7 @@ function toThousands (num) {
  * @param {number} maxLen 最大长度
  * @return {string}
  */
-function omitText (str, maxLen) {
+function omitText (str: string, maxLen: number): string {
   if (!str) {
     return ''
   }
@@ -250,7 +227,7 @@ function omitText (str, maxLen) {
  * @description: 判断是否支持storage存储（区分无痕模式）
  * @return {boolean}
  */
-function isStorageSupported () {
+function isStorageSupported (): boolean {
   const testKey = 'testIsStorageSupported'
   const storage = window.sessionStorage
   try {
@@ -269,8 +246,8 @@ function isStorageSupported () {
  * @param {number} delay 延时，毫秒
  * @return {object} timer 调用timer.clear()可以清除该定时器
  */
-function setMyInterval (fn, delay) {
-  let timeId = null
+function setMyInterval (fn: any, delay: number) {
+  let timeId: any = null
   const intervalFn = () => {
     timeId = setTimeout(() => {
       intervalFn()
@@ -288,8 +265,6 @@ function setMyInterval (fn, delay) {
 export default {
   // 日期时间格式化
   formatDate,
-  // 倒计时
-  getCountDown,
   // 日期格式转时间戳
   getTimestamp,
   // 判断是否是NaN

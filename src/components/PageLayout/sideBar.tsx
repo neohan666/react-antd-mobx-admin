@@ -2,7 +2,7 @@
  * @Description: 侧边栏
  * @Author: Neo
  * @Date: 2022-02-15
- * @LastEditTime: 2022-02-24
+ * @LastEditTime: 2022-03-18
  * @LastEditors: Neo
  */
 import './sideBar.less'
@@ -11,6 +11,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useStore, observer } from '@/hooks/storeHook'
 import { routes } from '@/router'
 import { getIsCanAccess } from '@/utils/appTools'
+import { RoutesItemTypeNew } from '@/types/routes'
 
 const { Sider } = Layout
 const { SubMenu, Item: ItemMenu } = Menu
@@ -25,13 +26,13 @@ function SideBar () {
   /**
    * 根据路由配置自动生成侧边菜单
    */
-  const openKeys = [] // 用于根据当前路由默认展开子菜单
+  const openKeys: string[] = [] // 用于根据当前路由默认展开子菜单
   const menuList = getMenuList()
   // 递归获取层级菜单
   function getMenuList () {
-    const getList = (routeList = [], prePath = '') => {
-      let menuList = []
-      routeList.forEach(v => {
+    const getList: any = (routeList = [], prePath = '') => {
+      let menuList: JSX.Element[] = []
+      routeList.forEach((v: RoutesItemTypeNew) => {
         v.meta = v.meta || {}
         if (v.redirect || v.path === '*' || v.meta.hideMenu) {
           return

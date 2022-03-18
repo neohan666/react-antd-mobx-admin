@@ -7,7 +7,14 @@
  */
 import { makeAutoObservable } from 'mobx'
 
+interface UserInfoType {
+  [propName: string]: any;
+}
+
 export default class User {
+  ticket = ''
+  userInfo: UserInfoType = {}
+
   constructor () {
     /**
      * state
@@ -44,12 +51,12 @@ export default class User {
   /**
    * action
    */
-  setTicket (val) {
+  setTicket (val: string) {
     this.ticket = val || ''
     window.localStorage.setItem('ticket', this.ticket)
   }
 
-  async setUserInfo (userInfo) {
+  async setUserInfo (userInfo: UserInfoType) {
     this.userInfo = userInfo || {}
   }
 }

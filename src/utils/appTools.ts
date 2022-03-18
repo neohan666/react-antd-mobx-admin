@@ -4,6 +4,7 @@
  */
 import { routes } from '@/router'
 import store from '@/store'
+import { RoutesItemTypeNew } from '@/types/routes'
 
 /**
  * 获取h5域名环境
@@ -25,9 +26,9 @@ function getH5Env (url = '') {
  * 获取路由路径和路由meta字段的映射数据
  */
 function getRouteMetaMap () {
-  const getMap = (routeList = [], prePath = '') => {
+  const getMap: any = (routeList = [], prePath = '') => {
     let map = {}
-    routeList.forEach(v => {
+    routeList.forEach((v: RoutesItemTypeNew) => {
       v.meta = v.meta || {}
       if (v.redirect || v.path === '*') {
         return
@@ -55,11 +56,9 @@ function getRouteMetaMap () {
 
 /**
  * @description: 获取是否具有权限
- * @param {object} meta 路由配置中自定义meta数据
- * @param {string} message 跳转403无权限页面的额外说明
  * @return {boolean}
  */
-function getIsCanAccess (accessId) {
+function getIsCanAccess (accessId?: string | number) {
   if (!accessId) {
     return true
   }
@@ -78,7 +77,7 @@ function getIsCanAccess (accessId) {
  * @param {boolean} isIncludeParams 是否需要包含路由参数，便于路由跳转携带数据
  * @return {string}
  */
-function getRoutePath (url, isIncludeParams) {
+function getRoutePath (url = '', isIncludeParams = false) {
   url = url || window.location.href
   const divideStr = process.env.PUBLIC_URL + '/'
   const reg = new RegExp(`//[\\w-\\.:]+${divideStr}(.*)*`)

@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom'
 import { Button, DatePicker } from 'antd'
 import tools from '@/utils/tools'
 
-function Index (props) {
+function Index (props: any) {
   const navigate = useNavigate()
 
   const { userStore } = useStore()
