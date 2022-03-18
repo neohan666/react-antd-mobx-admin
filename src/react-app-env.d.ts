@@ -40,8 +40,8 @@ declare module '*.png' {
 }
 
 declare module '*.webp' {
-    const src: string
-    export default src
+  const src: string
+  export default src
 }
 
 declare module '*.svg' {
@@ -63,4 +63,9 @@ declare module '*.module.css' {
 declare module '*.module.less' {
   const classes: { readonly [key: string]: string }
   export default classes
+}
+
+declare module 'dayjs' {
+  const dayjs: any
+  export default dayjs
 }
