@@ -52,7 +52,7 @@ function HeadBar () {
   }
 
   return (
-    <div className="c-Layout-headBar">
+    <div className="c-PageLayout-headBar">
       <div className="headLeft">
         {/* 侧边栏折叠按钮 */}
         <div className="toggleIcon" onClick={onToggle}>

@@ -74,7 +74,7 @@ function SideBar () {
   }
 
   return (
-    <div className="c-Layout-sideBar">
+    <div className="c-PageLayout-sideBar">
       <Layout className="sideBarLayout">
         <Sider
           trigger={null}

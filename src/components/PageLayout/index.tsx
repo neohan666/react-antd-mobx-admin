@@ -12,7 +12,7 @@ import SideBar from './sideBar'
 
 function PageLayout () {
   return (
-    <div className="c-Layout-index">
+    <div className="c-PageLayout-index">
       <SideBar />
 
       <div className="appMainWrap">
