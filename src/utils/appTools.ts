@@ -1,6 +1,10 @@
 /**
- * @Desc: 业务相关公共函数
- * （函数请添加详细注释）
+ * @Description: 业务相关公共函数
+ * @Description: （函数请添加详细注释）
+ * @Author: Neo
+ * @Date: 2022-03-18
+ * @LastEditTime: 2022-03-21
+ * @LastEditors: Neo
  */
 import { routes } from '@/router'
 import store from '@/store'

@@ -2,9 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 
+// mobx
 import StoreContext from '@/contexts/storeContext'
 import store from '@/store'
 
+// antd
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/lib/locale/zh_CN'
 import 'antd/dist/antd.css'
@@ -12,10 +14,6 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 
 import '@/assets/style/index.less'
-
-import mainFn from '@/utils/mainFn'
-
-mainFn.setNoReferer()
 
 dayjs.locale('zh-cn')
 
