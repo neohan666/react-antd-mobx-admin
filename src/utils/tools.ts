@@ -8,7 +8,7 @@
  * @LastEditTime: 2022-03-21
  * @LastEditors: Neo
  */
-import { tools } from 'neo-utils' // https://www.npmjs.com/package/neo-utils
+import { tools } from 'ut-utils' // https://www.npmjs.com/package/ut-utils
 
 const deft = {
 
