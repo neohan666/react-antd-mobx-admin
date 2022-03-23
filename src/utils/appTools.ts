@@ -34,7 +34,7 @@ function getRouteMetaMap () {
     let map = {}
     routeList.forEach((v: RoutesItemTypeNew) => {
       v.meta = v.meta || {}
-      if (v.redirect || v.path === '*') {
+      if (v.redirect || v.path === '*' || v.path === undefined) {
         return
       }
       let currentPath = prePath + v.path
