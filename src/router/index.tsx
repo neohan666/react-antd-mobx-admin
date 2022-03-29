@@ -2,7 +2,7 @@
  * @Description: 路由统一配置
  * @Author: Neo
  * @Date: 2021-12-20
- * @LastEditTime: 2021-12-31
+ * @LastEditTime: 2022-03-29
  * @LastEditors: Neo
  */
 import store from '@/store'
@@ -12,6 +12,7 @@ import { HomeOutlined, GithubOutlined } from '@ant-design/icons' // meta.icon设
 import { getIsCanAccess } from '@/utils/appTools'
 import { RoutesTypeNew } from '@/types/routes'
 import { OnRouteBeforeType } from 'react-router-waiter'
+
 // 导入模块路由
 import test from './test'
 import nest from './nest'
@@ -74,7 +75,7 @@ const routes: RoutesTypeNew = [
       hideMenu: true,
     },
   },
-  {
+  { // 仅用于侧边栏外链菜单
     url: 'https://github.com/neohan666/react-antd-mobx-admin',
     meta: {
       title: 'GitHub',
