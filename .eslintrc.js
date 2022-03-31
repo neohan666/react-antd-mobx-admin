@@ -9,7 +9,7 @@ module.exports = {
       jsx: true,
     },
     ecmaVersion: 2020,
-    sourceType: 'module'
+    sourceType: 'module',
   },
   parser: '@typescript-eslint/parser',
   extends: [
@@ -28,6 +28,14 @@ module.exports = {
     }
   },
   globals: {},
+  ignorePatterns: [
+    'dist',
+    'build',
+    'scripts',
+    'config',
+    '*.html',
+    'src/utils/libs',
+  ],
   rules: {
     'no-console': 'off',
     'no-debugger': 'off',
