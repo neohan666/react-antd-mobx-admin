@@ -7,17 +7,21 @@
  */
 const { createProxyMiddleware } = require('http-proxy-middleware')
 
-const proxyData = {
+const proxyConfig = {
   '/proxy': {
     target: 'http://test.api.com/',
     changeOrigin: true,
     secure: false,
+    pathRewrite: { '^/proxy': '' }
   },
 }
 
 module.exports = function setupProxy (app: any) {
-  Object.keys(proxyData).forEach(key => {
-    app.use(key, createProxyMiddleware((proxyData as any)[key]))
+  Object.keys(proxyConfig).forEach(key => {
+    app.use(key, createProxyMiddleware({
+      logLevel: 'warn',
+      ...(proxyConfig as any)[key],
+    }))
   })
 }
 
