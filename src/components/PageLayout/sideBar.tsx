@@ -2,7 +2,7 @@
  * @Description: 侧边栏
  * @Author: Neo
  * @Date: 2022-02-15
- * @LastEditTime: 2022-03-18
+ * @LastEditTime: 2022-08-12
  * @LastEditors: Neo
  */
 import './sideBar.less'
@@ -56,7 +56,11 @@ function SideBar () {
           } else {
             menuList.push((
               <ItemMenu key={currentPath} icon={v.meta.icon}>
-                <Link to={currentPath}>{v.meta.title}</Link>
+                {
+                  currentPath === pathname
+                    ? <span>{v.meta.title}</span>
+                    : <Link to={currentPath}>{v.meta.title}</Link>
+                }
               </ItemMenu>
             ))
           }
